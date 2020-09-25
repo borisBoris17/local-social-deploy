@@ -23,3 +23,22 @@ services:
       - 3001:3000
     # environment: 
     #   - CHOKIDAR_USEPOLLING=true
+  
+  local-social-api:
+    image: local-social-api:dev
+    stdin_open: true
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    ports: 
+        - 3002:8000
+  
+  mongo:
+    image: mongo
+    volumes:
+      - mongodbdata:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongodbdata:
